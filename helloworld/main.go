@@ -1,12 +1,20 @@
 package helloworld
 
-import "fmt"
+const englishHelloPrefix = "Hello, "
+const spanishHelloPrefix = "Hola, "
+const frenchHelloPrefix = "Bonjour, "
 
-const englishHelloPrefix = "Hello"
+func Hello(name string, language string) string {
+	prefix := englishHelloPrefix
 
-func Hello(name string) string {
 	if name == "" {
 		name = "World"
 	}
-	return fmt.Sprintf("%s, %s", englishHelloPrefix, name)
+	switch language {
+	case "Spanish":
+		prefix = spanishHelloPrefix
+	case "French":
+		prefix = frenchHelloPrefix
+	}
+	return prefix + name
 }
